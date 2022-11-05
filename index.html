@@ -15,7 +15,7 @@
 
         * {
             font-family: 'Courier New', 'Courier New', Courier, monospace;
-            text-shadow: 2px 2px 2px gray;
+            text-shadow: 2px 2px 4px gray;
         }
         body {
             background-image: url("https://img5.goodfon.com/wallpaper/nbig/a/bd/daniia-kopengagen-reka-kanal-doma-ogni-fonari-vecher.jpg");
@@ -24,6 +24,21 @@
             height : 100vh;
             weight: 100vw;
             background-size : cover;
+
+        <script>
+            function renderRandomImage() {
+        let imageList = [];
+        for (i = 0; i < 6; i++) {
+          imageList.push(i);
+        }
+        let imageListLength = imageList.length;
+        let randomImage = Math.floor(Math.random() * (imageListLength))+1
+        randomImage = `images/${randomImage}.jpg`
+        $(document.body).css("background-image", `url(${randomImage})`);
+        }
+        </script>
+
+
         }
         
         .time{
@@ -73,10 +88,38 @@
 
 <body>
     <div class="main">
-        <div id="time" class="time"> Cathie Kang
+
+        <div style="text-align: center;">
+            <span id="clock" style="color:white; font-size: 100px;">clock</span>
+            <span id="apm" style="color:white; font-size: 50px;"  >ampm</span>
         </div>
+        <script>
+            var Target = document.getElementById("clock");
+            var Target_apm = document.getElementById("apm");
+            function clock() {
+                var time = new Date();
+                var hours = time.getHours();
+                var minutes = time.getMinutes();
+                var seconds = time.getSeconds();
+                var AmPm ="AM";
+                if(hours > 12){   
+                    var AmPm ="PM";
+                    hours %= 12;
+                }
+    
+                Target.innerText = 
+                `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+    
+                Target_apm.innerText = `${AmPm}`;
+    
+            }
+            clock();
+            setInterval(clock, 1000); // 1초마다 실행
+        </script>
+        
+
         <div class="greeting">Writer, Front-end engineer</div>
-        <div class="todo">live in Denmark & Canada</div>
+        <div class="todo">I live in Denmark & Canada</div>
     </div>
     <div class="quote">
         <div id="author" class="author"> Emily Dickinson </div>

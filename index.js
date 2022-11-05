@@ -42,3 +42,4 @@ $(document).ready(function () {
     randomImage = `images/${randomImage}.jpg`
     $(document.body).css("background-image", `url(${randomImage})`);
   }
+
